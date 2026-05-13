@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useLang } from "@/feature/i18n/LangContext";
 
 interface Particle {
   id: number;
@@ -43,6 +44,7 @@ interface CompressionOverlayProps {
 }
 
 export function CompressionOverlay({ isVisible, fileName }: CompressionOverlayProps) {
+  const { t } = useLang();
   const [progress, setProgress] = useState(0);
   const [particles] = useState(() => generateParticles(40));
   const [stage, setStage] = useState(0); // 0: analyzing, 1: compressing, 2: finalizing
@@ -88,7 +90,11 @@ export function CompressionOverlay({ isVisible, fileName }: CompressionOverlayPr
     return () => cancelAnimationFrame(raf);
   }, [isVisible]);
 
-  const stageLabels = ["Analyzing image...", "Compressing pixels...", "Finalizing output..."];
+  const stageLabels = [
+    t("compress.overlay.analyzing"),
+    t("compress.overlay.compressing"),
+    t("compress.overlay.finalizing")
+  ];
 
   if (!isVisible) return null;
 

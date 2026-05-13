@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import { useLang } from "@/feature/i18n/LangContext";
 
 interface DragDropOverlayProps {
   onFileDrop: (file: File) => void;
@@ -9,6 +10,7 @@ interface DragDropOverlayProps {
 }
 
 export function DragDropOverlay({ onFileDrop, acceptedMime, fileTypeLabel }: DragDropOverlayProps) {
+  const { t } = useLang();
   const [isVisible, setIsVisible] = useState(false);
   const [isValid, setIsValid] = useState(true);
   const enterCount = useRef(0); // tracks nested dragenter/dragleave
@@ -141,16 +143,16 @@ export function DragDropOverlay({ onFileDrop, acceptedMime, fileTypeLabel }: Dra
         <div className="text-center">
           {isValid ? (
             <>
-              <p className="text-white text-2xl font-bold mb-1">Drop to compress!</p>
+              <p className="text-white text-2xl font-bold mb-1">{t("compress.dragdrop.drop")}</p>
               <p className="text-emerald-400 text-base font-medium">
-                Release your {fileTypeLabel} file here
+                {t("compress.dragdrop.release", { fileType: fileTypeLabel })}
               </p>
             </>
           ) : (
             <>
-              <p className="text-white text-2xl font-bold mb-1">Wrong file type</p>
+              <p className="text-white text-2xl font-bold mb-1">{t("compress.dragdrop.wrong")}</p>
               <p className="text-red-400 text-base font-medium">
-                Only {fileTypeLabel} files are accepted
+                {t("compress.dragdrop.limit", { fileType: fileTypeLabel })}
               </p>
             </>
           )}

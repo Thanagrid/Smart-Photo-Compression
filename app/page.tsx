@@ -39,7 +39,7 @@ export default function HomePage() {
         {/* Divider */}
         <div className="mt-8 mb-2 flex items-center gap-4 w-full max-w-2xl">
           <div className="flex-1 h-px bg-zinc-200 dark:bg-zinc-800" />
-          <span className="text-xs text-zinc-400 dark:text-zinc-600 font-medium uppercase tracking-widest">or choose</span>
+          <span className="text-xs text-zinc-400 dark:text-zinc-600 font-medium uppercase tracking-widest">{t("home.divider.or")}</span>
           <div className="flex-1 h-px bg-zinc-200 dark:bg-zinc-800" />
         </div>
 
@@ -76,14 +76,14 @@ export default function HomePage() {
         {/* Interactive Demo */}
         <div className="mt-24 w-full px-4">
           <div className="mb-8 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-zinc-900 to-zinc-500 dark:from-zinc-100 dark:to-zinc-500">Exceptional Quality, Fraction of the Size</h2>
-            <p className="text-zinc-500 dark:text-zinc-400 mt-2">Drag the slider to compare between the Original and the Compressed version</p>
+            <h2 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-zinc-900 to-zinc-500 dark:from-zinc-100 dark:to-zinc-500">{t("home.demo.title")}</h2>
+            <p className="text-zinc-500 dark:text-zinc-400 mt-2">{t("home.demo.desc")}</p>
           </div>
           <ImageCompareSlider 
             originalImage="/images/demo_landscape.png"
             compressedImage="/images/demo_landscape_compressed.jpg"
-            originalLabel="Original: 5.2 MB"
-            compressedLabel="Compressed: 1.1 MB"
+            originalLabel={`${t("home.demo.original")}: 5.2 MB`}
+            compressedLabel={`${t("home.demo.compressed")}: 1.1 MB`}
           />
         </div>
         
@@ -124,7 +124,7 @@ export default function HomePage() {
           </div>
 
           <div className="flex flex-col items-center">
-            <h4 className="text-zinc-900 dark:text-zinc-100 font-semibold mb-4 text-sm tracking-widest uppercase">Contact</h4>
+            <h4 className="text-zinc-900 dark:text-zinc-100 font-semibold mb-4 text-sm tracking-widest uppercase">{t("home.footer.contact")}</h4>
             <div className="flex items-center justify-center gap-6 font-medium">
               <a 
                 href="https://www.linkedin.com/in/tanagrid-saekaew-80b955402" 

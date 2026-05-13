@@ -22,6 +22,8 @@ const en: Translations = {
   "home.feat3.desc": "Your images never leave your device, ensuring complete privacy.",
   "home.footer.p1": "This is my small project to experiment with 100% AI-powered coding (Gemini, Claude).",
   "home.footer.p2": "It's a website for compressing PNG and JPG images, with more features planned for the future.",
+  "home.footer.contact": "Contact",
+  "home.divider.or": "or choose",
   
   // Compress UI
   "compress.back": "Back to Home",
@@ -58,7 +60,32 @@ const en: Translations = {
   "compress.btn.recompress": "Recompress",
   "compress.btn.startover": "Start Over",
   "compress.error.select": "Please select a {fileType} file.",
-  "compress.error.failed": "Failed to compress image."
+  "compress.error.failed": "Failed to compress image.",
+
+  // Image Slider
+  "home.demo.title": "Exceptional Quality, Fraction of the Size",
+  "home.demo.desc": "Drag the slider to compare between the Original and the Compressed version",
+  "home.demo.original": "Original",
+  "home.demo.compressed": "Compressed",
+
+  // Compression Overlay
+  "compress.overlay.analyzing": "Analyzing image...",
+  "compress.overlay.compressing": "Compressing pixels...",
+  "compress.overlay.finalizing": "Finalizing output...",
+
+  // Drag & Drop Overlays
+  "compress.dragdrop.drop": "Drop to compress!",
+  "compress.dragdrop.release": "Release your {fileType} file here",
+  "compress.dragdrop.wrong": "Wrong file type",
+  "compress.dragdrop.limit": "Only {fileType} files are accepted",
+
+  "home.smartdrop.drop": "Drop to compress {fileType}!",
+  "home.smartdrop.route": "We'll take you straight to the {fileType} compressor",
+  "home.smartdrop.unsupported": "Unsupported file type",
+  "home.smartdrop.only": "Only PNG and JPG files are accepted",
+  "home.smartdrop.title": "Drop your image here",
+  "home.smartdrop.desc": "Supports PNG and JPG — we'll route you automatically",
+  "home.smartdrop.browse": "or click to browse files"
 };
 
 const th: Translations = {
@@ -77,6 +104,8 @@ const th: Translations = {
   "home.feat3.desc": "รูปภาพของคุณจะไม่ถูกส่งออกจากเครื่อง มั่นใจได้ในความปลอดภัยสูงสุด",
   "home.footer.p1": "โปรเจ็กต์เล็กๆ นี้จัดทำขึ้นเพื่อทดลองการเขียนโค้ดด้วย AI แบบ 100% (Gemini, Claude)",
   "home.footer.p2": "เป็นเว็บไซต์สำหรับบีบอัดไฟล์รูปภาพ PNG และ JPG และจะมีฟีเจอร์อื่นๆ เพิ่มเติมในอนาคต",
+  "home.footer.contact": "ช่องทางติดต่อ",
+  "home.divider.or": "หรือเลือก",
 
   // Compress UI
   "compress.back": "กลับหน้าหลัก",
@@ -113,7 +142,32 @@ const th: Translations = {
   "compress.btn.recompress": "บีบอัดอีกรอบ",
   "compress.btn.startover": "เริ่มใหม่",
   "compress.error.select": "กรุณาเลือกไฟล์ {fileType}",
-  "compress.error.failed": "เกิดข้อผิดพลาดในการบีบอัด"
+  "compress.error.failed": "เกิดข้อผิดพลาดในการบีบอัด",
+
+  // Image Slider
+  "home.demo.title": "คุณภาพคับแก้ว ในขนาดที่เล็กลงมาก",
+  "home.demo.desc": "ลากแถบสไลด์เพื่อเปรียบเทียบระหว่างภาพต้นฉบับและภาพที่บีบอัดแล้ว",
+  "home.demo.original": "ต้นฉบับ",
+  "home.demo.compressed": "บีบอัดแล้ว",
+
+  // Compression Overlay
+  "compress.overlay.analyzing": "กำลังวิเคราะห์รูปภาพ...",
+  "compress.overlay.compressing": "กำลังบีบอัดพิกเซล...",
+  "compress.overlay.finalizing": "กำลังจัดเตรียมไฟล์...",
+
+  // Drag & Drop Overlays
+  "compress.dragdrop.drop": "วางเพื่อบีบอัดทันที!",
+  "compress.dragdrop.release": "ปล่อยไฟล์ {fileType} ของคุณที่นี่",
+  "compress.dragdrop.wrong": "ประเภทไฟล์ไม่ถูกต้อง",
+  "compress.dragdrop.limit": "รองรับเฉพาะไฟล์ {fileType} เท่านั้น",
+
+  "home.smartdrop.drop": "วางเพื่อบีบอัด {fileType}!",
+  "home.smartdrop.route": "เราจะพาคุณไปยังหน้าระบบบีบอัด {fileType} ทันที",
+  "home.smartdrop.unsupported": "ไม่รองรับไฟล์ประเภทนี้",
+  "home.smartdrop.only": "รองรับเฉพาะไฟล์ PNG และ JPG เท่านั้น",
+  "home.smartdrop.title": "ลากรูปมาวางที่นี่ได้เลย",
+  "home.smartdrop.desc": "รองรับ PNG และ JPG — ระบบจะเลือกหน้าให้คุณโดยอัตโนมัติ",
+  "home.smartdrop.browse": "หรือคลิกเพื่อเลือกไฟล์"
 };
 
 const dictionaries = { en, th };

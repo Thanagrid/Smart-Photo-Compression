@@ -3,12 +3,14 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { setPendingFile } from "@/feature/home/store/pending-file-store";
+import { useLang } from "@/feature/i18n/LangContext";
 
 const ACCEPTED_MIME = ["image/png", "image/jpeg", "image/jpg"];
 
 type DragState = "idle" | "valid" | "invalid";
 
 export function SmartDropZone() {
+  const { t } = useLang();
   const router = useRouter();
   const [dragState, setDragState] = useState<DragState>("idle");
   const [dragLabel, setDragLabel] = useState<string>("");
@@ -135,16 +137,16 @@ export function SmartDropZone() {
               {isValid ? (
                 <>
                   <p className="text-white text-2xl font-bold mb-1">
-                    Drop to compress {dragLabel}!
+                    {t("home.smartdrop.drop", { fileType: dragLabel })}
                   </p>
                   <p className="text-emerald-400 text-base font-medium">
-                    We&apos;ll take you straight to the {dragLabel} compressor
+                    {t("home.smartdrop.route", { fileType: dragLabel })}
                   </p>
                 </>
               ) : (
                 <>
-                  <p className="text-white text-2xl font-bold mb-1">Unsupported file type</p>
-                  <p className="text-red-400 text-base font-medium">Only PNG and JPG files are accepted</p>
+                  <p className="text-white text-2xl font-bold mb-1">{t("home.smartdrop.unsupported")}</p>
+                  <p className="text-red-400 text-base font-medium">{t("home.smartdrop.only")}</p>
                 </>
               )}
             </div>
@@ -206,11 +208,10 @@ export function SmartDropZone() {
           {/* Text */}
           <div className="text-center">
             <p className="text-lg font-bold text-zinc-800 dark:text-zinc-100 mb-1">
-              Drop your image here
+              {t("home.smartdrop.title")}
             </p>
             <p className="text-sm text-zinc-500 dark:text-zinc-400">
-              Supports <span className="text-emerald-500 font-semibold">PNG</span> and{" "}
-              <span className="text-cyan-500 font-semibold">JPG</span> — we&apos;ll route you automatically
+              {t("home.smartdrop.desc")}
             </p>
           </div>
 
@@ -224,7 +225,7 @@ export function SmartDropZone() {
             </span>
           </div>
 
-          <p className="text-xs text-zinc-400 dark:text-zinc-600 mt-1">or click to browse files</p>
+          <p className="text-xs text-zinc-400 dark:text-zinc-600 mt-1">{t("home.smartdrop.browse")}</p>
         </div>
       </div>
     </>
