@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useLang } from "@/feature/i18n/LangContext";
+import { ImageCompareSlider } from "@/feature/home/component/image-compare-slider";
 
 export default function HomePage() {
   const { t } = useLang();
@@ -58,6 +59,21 @@ export default function HomePage() {
             </span>
             <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out"></div>
           </Link>
+        </div>
+
+
+        {/* Interactive Demo */}
+        <div className="mt-24 w-full px-4">
+          <div className="mb-8 text-center">
+            <h2 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-zinc-900 to-zinc-500 dark:from-zinc-100 dark:to-zinc-500">Exceptional Quality, Fraction of the Size</h2>
+            <p className="text-zinc-500 dark:text-zinc-400 mt-2">Drag the slider to compare between the Original and the Compressed version</p>
+          </div>
+          <ImageCompareSlider 
+            originalImage="/images/demo_landscape.png"
+            compressedImage="/images/demo_landscape_compressed.jpg"
+            originalLabel="Original: 5.2 MB"
+            compressedLabel="Compressed: 1.1 MB"
+          />
         </div>
         
         {/* Feature Highlights */}
