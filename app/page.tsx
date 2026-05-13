@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useLang } from "@/feature/i18n/LangContext";
 import { ImageCompareSlider } from "@/feature/home/component/image-compare-slider";
+import { SmartDropZone } from "@/feature/home/component/smart-drop-zone";
 
 export default function HomePage() {
   const { t } = useLang();
@@ -28,9 +29,19 @@ export default function HomePage() {
         </h1>
 
         {/* Description */}
-        <p className="max-w-2xl text-lg md:text-xl text-zinc-500 dark:text-zinc-400 mb-10 leading-relaxed">
+        <p className="max-w-2xl text-lg md:text-xl text-zinc-500 dark:text-zinc-400 mb-6 leading-relaxed">
           {t("home.desc")}
         </p>
+
+        {/* Smart Drop Zone */}
+        <SmartDropZone />
+
+        {/* Divider */}
+        <div className="mt-8 mb-2 flex items-center gap-4 w-full max-w-2xl">
+          <div className="flex-1 h-px bg-zinc-200 dark:bg-zinc-800" />
+          <span className="text-xs text-zinc-400 dark:text-zinc-600 font-medium uppercase tracking-widest">or choose</span>
+          <div className="flex-1 h-px bg-zinc-200 dark:bg-zinc-800" />
+        </div>
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">

@@ -6,6 +6,7 @@ import { useLang } from "@/feature/i18n/LangContext";
 import { useTheme } from "@/feature/theme/ThemeContext";
 import { CompressionOverlay } from "./compression-overlay";
 import { DragDropOverlay } from "./drag-drop-overlay";
+import { consumePendingFile } from "@/feature/home/store/pending-file-store";
 
 // Helper function to format bytes
 function formatBytes(bytes: number, decimals = 2) {
@@ -49,6 +50,16 @@ export function CompressUi({ fileType = "png" }: CompressUiProps) {
       if (compressedUrl) URL.revokeObjectURL(compressedUrl);
     };
   }, [compressedUrl]);
+
+  // Consume any file passed from the Smart Drop Zone on the home page
+  useEffect(() => {
+    const pending = consumePendingFile();
+    if (pending) {
+      // Small delay to let the page finish mounting
+      setTimeout(() => handleFile(pending), 50);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleFile = (selectedFile: File) => {
     const expectedMime = fileType === "png" ? "image/png" : "image/jpeg";
