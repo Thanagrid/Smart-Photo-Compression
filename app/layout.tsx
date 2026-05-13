@@ -5,6 +5,8 @@ import { LangProvider } from "@/feature/i18n/LangContext";
 import { LanguageSwitcher } from "@/feature/i18n/LanguageSwitcher";
 import { ThemeProvider } from "@/feature/theme/ThemeContext";
 import { ThemeSwitcher } from "@/feature/theme/ThemeSwitcher";
+import { AnimatedBackground } from "@/feature/ui/component/animated-background";
+import { MouseSparkles } from "@/feature/ui/component/mouse-sparkles";
 
 const prompt = Prompt({
   variable: "--font-prompt",
@@ -31,6 +33,8 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <ThemeProvider>
+          <AnimatedBackground />
+          <MouseSparkles />
           <LangProvider>
             {/* Combined toolbar: lang + theme */}
             <div className="fixed top-6 right-6 z-50 flex items-center gap-1 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border border-zinc-200 dark:border-zinc-800 rounded-full p-1 shadow-lg">
