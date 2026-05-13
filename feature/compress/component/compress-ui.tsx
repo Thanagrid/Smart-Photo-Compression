@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useRef, DragEvent, ChangeEvent, useEffect } from "react";
+import { useState, useRef, ChangeEvent, useEffect, useCallback } from "react";
 import { useLang } from "@/feature/i18n/LangContext";
 import { useTheme } from "@/feature/theme/ThemeContext";
 import { CompressionOverlay } from "./compression-overlay";
+import { DragDropOverlay } from "./drag-drop-overlay";
 
 // Helper function to format bytes
 function formatBytes(bytes: number, decimals = 2) {
@@ -33,8 +34,8 @@ export function CompressUi({ fileType = "png" }: CompressUiProps) {
   const [isCompressing, setIsCompressing] = useState(false);
   const [compressedBlob, setCompressedBlob] = useState<Blob | null>(null);
   const [compressedUrl, setCompressedUrl] = useState<string | null>(null);
-  const [isDragging, setIsDragging] = useState(false);
 
+  const acceptedMime = fileType === "png" ? ["image/png"] : ["image/jpeg", "image/jpg"];
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -66,28 +67,16 @@ export function CompressUi({ fileType = "png" }: CompressUiProps) {
     }
   };
 
-  const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    setIsDragging(true);
-  };
-
-  const handleDragLeave = () => {
-    setIsDragging(false);
-  };
-
-  const handleDrop = (e: DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    setIsDragging(false);
-    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-      handleFile(e.dataTransfer.files[0]);
-    }
-  };
-
   const handleFileInput = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       handleFile(e.target.files[0]);
     }
   };
+
+  const handleFileDrop = useCallback((file: File) => {
+    handleFile(file);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fileType, compressedUrl]);
 
   const removeFile = () => {
     setFile(null);
@@ -160,6 +149,11 @@ export function CompressUi({ fileType = "png" }: CompressUiProps) {
   return (
     <div className="w-full max-w-2xl mx-auto flex flex-col py-16 px-6 min-h-screen font-sans">
       <CompressionOverlay isVisible={isCompressing} fileName={file?.name} />
+      <DragDropOverlay
+        onFileDrop={handleFileDrop}
+        acceptedMime={acceptedMime}
+        fileTypeLabel={fileType.toUpperCase()}
+      />
       
       {/* Header */}
       <div className="mb-10 text-center sm:text-left">
@@ -196,15 +190,8 @@ export function CompressUi({ fileType = "png" }: CompressUiProps) {
 
           {!file ? (
             <div 
-              onDragOver={handleDragOver}
-              onDragLeave={handleDragLeave}
-              onDrop={handleDrop}
               onClick={() => fileInputRef.current?.click()}
-              className={`w-full min-h-[180px] flex flex-col items-center justify-center p-6 border-2 border-dashed rounded-2xl transition-all duration-300 cursor-pointer group ${
-                isDragging 
-                  ? "border-emerald-500 bg-emerald-500/10 shadow-[0_0_30px_-10px_rgba(16,185,129,0.2)]" 
-                  : "border-zinc-300 dark:border-zinc-800 hover:border-emerald-500/50 bg-white dark:bg-zinc-950 hover:bg-zinc-50 dark:hover:bg-zinc-900/50"
-              }`}
+              className="w-full min-h-[180px] flex flex-col items-center justify-center p-6 border-2 border-dashed rounded-2xl transition-all duration-300 cursor-pointer group border-zinc-300 dark:border-zinc-800 hover:border-emerald-500/50 bg-white dark:bg-zinc-950 hover:bg-zinc-50 dark:hover:bg-zinc-900/50"
             >
               <div className="w-12 h-12 rounded-2xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 flex items-center justify-center text-emerald-500 dark:text-emerald-400 mb-4 group-hover:scale-110 transition-transform">
                 <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
