@@ -20,6 +20,8 @@ const en: Translations = {
   "home.feat2.desc": "Use quick presets or fine-tune from 1% to 100% with a precision slider and real-time size estimates.",
   "home.feat3.title": "100% Private",
   "home.feat3.desc": "Your images never leave your device, ensuring complete privacy.",
+  "home.footer.p1": "This is my small project to experiment with 100% AI-powered coding (Gemini, Claude).",
+  "home.footer.p2": "It's a website for compressing PNG and JPG images, with more features planned for the future.",
   
   // Compress UI
   "compress.back": "Back to Home",
@@ -73,6 +75,8 @@ const th: Translations = {
   "home.feat2.desc": "เลือก Preset ล่วงหน้า หรือจะปรับละเอียดตั้งแต่ 1-100% ด้วย Slider พร้อมดูขนาดไฟล์โดยประมาณ (Est. Size) แบบ Real-time",
   "home.feat3.title": "เป็นส่วนตัว 100%",
   "home.feat3.desc": "รูปภาพของคุณจะไม่ถูกส่งออกจากเครื่อง มั่นใจได้ในความปลอดภัยสูงสุด",
+  "home.footer.p1": "โปรเจ็กต์เล็กๆ นี้จัดทำขึ้นเพื่อทดลองการเขียนโค้ดด้วย AI แบบ 100% (Gemini, Claude)",
+  "home.footer.p2": "เป็นเว็บไซต์สำหรับบีบอัดไฟล์รูปภาพ PNG และ JPG และจะมีฟีเจอร์อื่นๆ เพิ่มเติมในอนาคต",
 
   // Compress UI
   "compress.back": "กลับหน้าหลัก",
