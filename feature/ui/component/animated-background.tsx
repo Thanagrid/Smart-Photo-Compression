@@ -31,6 +31,7 @@ export function AnimatedBackground() {
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme } = useTheme();
   const stars = useMemo(() => generateStars(STAR_COUNT), []);
+  const sunlightParticles = useMemo(() => generateStars(18), []); // Reduced count for cleaner look
 
   useEffect(() => {
     setMounted(true);
@@ -52,8 +53,8 @@ export function AnimatedBackground() {
           backgroundImage: isDark
             ? `linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
                linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)`
-            : `linear-gradient(rgba(0,0,0,0.06) 1px, transparent 1px),
-               linear-gradient(90deg, rgba(0,0,0,0.06) 1px, transparent 1px)`,
+            : `linear-gradient(rgba(0,0,0,0.015) 1px, transparent 1px),
+               linear-gradient(90deg, rgba(0,0,0,0.015) 1px, transparent 1px)`,
           backgroundSize: "48px 48px",
         }}
       />
@@ -64,7 +65,7 @@ export function AnimatedBackground() {
           {stars.map((star) => (
             <div
               key={star.id}
-              className="absolute rounded-full bg-white"
+              className="absolute rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.5)]"
               style={{
                 left: `${star.x}%`,
                 top: `${star.y}%`,
@@ -72,6 +73,26 @@ export function AnimatedBackground() {
                 height: `${star.size}px`,
                 opacity: star.opacity,
                 animation: `twinkle ${star.duration}s ${star.delay}s ease-in-out infinite`,
+              }}
+            />
+          ))}
+        </div>
+      )}
+
+      {/* Sunlight Particles – only visible in light mode */}
+      {!isDark && (
+        <div className="absolute inset-0">
+          {sunlightParticles.map((p) => (
+            <div
+              key={p.id}
+              className="absolute rounded-full bg-emerald-400/30 shadow-[0_0_15px_rgba(16,185,129,0.1)]"
+              style={{
+                left: `${p.x}%`,
+                top: `${p.y}%`,
+                width: `${p.size * 5}px`,
+                height: `${p.size * 5}px`,
+                opacity: p.opacity,
+                animation: `float-up ${p.duration * 2}s ${p.delay}s ease-in-out infinite`,
               }}
             />
           ))}
